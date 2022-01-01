@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/avatar.png">
-  <title>整合spring boot admin ，监控出现Redis指标异常</title>
+  <title>2021年终总结暨2022年计划任务</title>
   
     
       <meta 
         property="og:title" 
-        content="整合spring boot admin ，监控出现Redis指标异常">
+        content="2021年终总结暨2022年计划任务">
     
     
       <meta 
         property="og:url" 
-        content="https://luoguohua.github.io/2022/01/01/%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8/index.html">
+        content="https://luoguohua.github.io/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93%E6%9A%A82022%E5%B9%B4%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/index.html">
     
     
       <meta 
@@ -38,7 +38,7 @@
     
       <meta 
         property="og:img" 
-        content="罗国华的个人笔记博客">
+        content="禁止通行。">
     
     
       <meta 
@@ -57,7 +57,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="springBootAdmin">
+            content="private">
         
       
     
@@ -268,11 +268,11 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      整合spring boot admin ，监控出现Redis指标异常
+      2021年终总结暨2022年计划任务
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-01-01T08:32:18.000Z">
+    <time datetime="2022-01-01T13:36:19.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
@@ -283,15 +283,15 @@
       <span class="dot"></span>
       
         <a 
-          href="/categories/%E9%9A%8F%E7%AC%94/" 
+          href="/categories/life/" 
           class="post-meta-link">
-          随笔
+          life
         </a>
       
     
     
       <span class="dot"></span>
-      <span>205 字</span>
+      <span>9 字</span>
     
   </div>
   
@@ -306,9 +306,9 @@
         
           
           <a 
-            href="/tags/springBootAdmin/" 
+            href="/tags/private/" 
             class="post-meta-link">
-            springBootAdmin
+            private
           </a>
         
       </div>
@@ -318,13 +318,18 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="整合spring-boot-admin-，后台管理监控出现Redis指标异常"><a href="#整合spring-boot-admin-，后台管理监控出现Redis指标异常" class="headerlink" title="整合spring boot admin ，后台管理监控出现Redis指标异常"></a>整合spring boot admin ，后台管理监控出现Redis指标异常</h1><p> 错误信息如下：</p>
-<pre class="highlight"><span class="line">​</span><br><span class="line">error   org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to localhost:6379</span><br><span class="line"></span><br><span class="line">​</span><br></pre>
-
-<p>起初认为是redisIP在配置中的错误，排查配置发现没有问题，postman测试接口发现redis连接正常，一顿百度过后发现，spring boot admin 默认检测微服务中的所有指标信息，包括redis，如果配置文件中没有设置，则会根据默认的localhost配置去尝试连接redis，因此导致指标异常，如果当前微服务不需要连接redis，可以在yml配置文件中关闭这项指标的检测。如下：</p>
-<pre class="highlight"><span class="line">management:</span><br><span class="line">  health:</span><br><span class="line">    redis:</span><br><span class="line">      enabled: false</span><br><span class="line">​</span><br></pre>
-<p>重启服务后，可见指标被移除，服务监测页面显示正常。</p>
-
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="74e5b4f62e7dba4d576e910ce324db087e61c08da47c56154739703c670b7a9a">e965f997fa4cd2e85c00c4aaeb9a9d921c23f515f1159bce74eddf0c3fbed3a8fd2ed7836f7a710e16d598d1e118a2649e6f0b906f95e0fd4ba749baaa7b31cfb22c6b061a6fe3518f321e5ba8b10a1851f54057c369562279898f8e5efc2c4eebb4b923abd81a8b6a577d4ff01df0e4001a57e222c18ed16ed13c06fa15fee426c6c6afc94273aa4697e46abcaa2de8ec91ab4d9a496b5b72961c59b73ec73ea0242a5426223852035914153481dbf677f973e2a8a930af0db9790bc50573c25d0482c2cf2d9aca01454acd58c1ddf21253f910a147f6593bda44169dff98c8c155986832d608a4e4da062951bcf2d6d0e16e23944bd125b4184f0f5fd92c3768ef60a71a57ea8ccc6663d682ad5331bc4fd644fd710c8ef18d62508e8966f800061be37e05039ccd16fd6e24e82bb31c69d1d858c80af4795b3449ceaa80f16d863211c9f4189df8ba58d4f80daf01acc0230d11c88a09a2bb11d883dd15d2698699a6c52f83482f4bf2f7e1ce38a6b33d63a3615e368ac97cbaaa721ec64e8446270bcd13af70ff391466ea914817317c8ba7b0c53c4f19ff9327a283aec8243d51363e4eeb071c8f745c921ec64bdf23a44f3855337840e54b52b8c6df556253d151c3813ee015a37cce3e85ead04fac6d0446138d478ab95b09b2c9497bda24f77c32d69374628ce03d51dbfcea526f315a43cfe44b741c729b0fa48fd46bdd00e604b2cbe0e4b72788758929c4ca2cbe441165ab3115b092afd7165bffc35ac74717bf34eb583c9870af6bc0fb6b6282a05d2064b88cf5b1bfa1c1afdf08980418760e56d3a9c04a4b184ee4841e41df85a92eed41afccc81436222424e3f96f2a175348c9c08da7cd58def43c2f44dfcc3ec2b90c4843d2c3ee87ffc1d47d752b0d987db7fb23d17fb2d2f76109e970b429a1ca1b4b420b872837ad4ba54253c82397b8642bbd64a0475ba1bb5c53ef5f716d7d0ac1f48b7dd34cf239ecc45438c7dce89163036414dc674e77f6cfab01059e5f1294c6582eaa3dfc35ebe3b9bfd05cc8da41a98570722e20cd4251a934a833db998c5305a82b3aec6c2ca06a967dde28872442a567444965e532bf8b35931f9949866930003f008ed31e58be0e189f917a56dbfb79a69132691b74c1e1e19ad77d10431b80982dfbc13d91f05e834705e663eaa7edf40b129916cad0e863e64860e724b8d58bf2721b745334abacf1b8e3ca89ab422627138df5eba9f33d844418c905ba1846839d25aead6f5504d06e718245e0098b5567608e83a5038ead917c3413e18cf2b8367d0c6857bdb1616a904cccf164202374bb68d4a091765a83afd0c8337f59894d7c306dfc2a32cd26ab9908b3ceb1ccd6dc88c5677e272619c12adf80c469e8c03419b98cc5f2ac2ebffb40f008878d692d33e3f486b221f155fef7af4b0803991847ba34e448572eab57aece9040c774a641b5f42c9c793b116c89584ed3cf1d13edbf60fd1589ba77899f7af66ee2475ed497fdecbdb83468746988eaa9875cc7aba890ca22059648acfb4702b06e232e13884cc4bd23eb54e7e74b11b0d33316343aef6dae08d10f44017d044a74baabd3c399c5d251f71a36076ac389dfdbe548684d666d39d7185db95a87cd8868e02632c766acbc0158313d34a316ed86a294968b196a3302d2b76fb606df5e476971434e61232402ea849b3da6a15e79cc4c1547ac8dd8388e93b29bfd526d32a2613c0ffa73481615eb046fbbf969c42127ff2d157a30a9115b80bc7147b3581343351e81dbb8c64635ad8d58158698a44d33dca0ecf02ce818ebda51f5b1a73b4e58520b78bdee5311e79faf5ec7180510697d8302b0de40835caa5eddb0fd3f0aa88097d74bb61fd53ea3a9767df52b6a9f4cd024b98d536b8ea5e3aec45b027fd874d619a7a44614705df5865055c4b7e58702852d5297e26d971243dd6020fa54205443a021e4fce4a67417c7a5e95da271c4f33307255d2522e32c3f9e7c13e7048cef61e45cb46314df12d292ea39f5c5c9cd64d2670c4266f13524b91a1f02e62b8eaa49b70d23988945c155fcb3e92fa733e0cdadd17bc26f630ef7f502eab330b5f7fd58f727a1ec2dd3a47c8a8ed4c09241617b773c32b2234606233aa81583556fcdef18a45cb5c062a6ea3dd8cfb01d95f8b3a7b4e494c05fad7d4249fc74c1a9b2a2cdeb8ee8d69c48af87cc04541fcf62a9e64d1e7a8c108e22eab2e3b8c7fbe1bf42509837d6178f18b8d8bd9d42dab56198f841ddb6d91b056f119b64e5ef0c1a66a948c53ff6e2e0a2454f3d6c8ac5ac3e6f93df6bc3df138d18076a94516a1dade2a54668221fce428e521b4da0d48207da13919b138b16a209dee3396bc233cea0756d1908dafd228083de0a0065d2efc99e604439e1a2ee88e59fa6742fba8aaa547c37bfb3c30441364c0a9eb8196d0164a7a61e1a6e35e0f6248defb115e540dbdf4332aa4e09287475ac9cc8b11bb5ea04c363e07829ff428f3e1055796b9196458413e51e4a963a91f4f17e2f2818211013beac08c38e6ce68eb41e693a3ac92ea1b61d0cdd3b9d83cad48f5eb73ab6b2be9d3a19084b35bc6b9a8b8a82da445daf24701d73054c4d4635d5495da8efb1ddd6ec0efbeaa6bd1e7befcda8049c1830e4887f94fe5fcc474a823a4b5ace40dabf129152e2e48a03699a4a6741b13099a8d738ef009ebd37aad5b7f0a1058c9cae8bac41ecf90d4255fd3335fbed4c1bbaa99174278598a8c242d213d5b788062b7254ec5ebf5fc9f160d018e3b98fdeacff102f0b71bc4d3dba9c909e3f835f53cba8327d8f6e31e5e897746477449f2e4373dfa1ab498954bcb0805216100624081ff87938bda8c84315ac7d9dcd6afb2ab92ce0b464fd3fa741b31ebb488126ca5ce2b0f86fbea34d3be3b6ede6671020bed64307ef292fc34d95b1a659b5b315feb17b4f83297b4542e28b1f5567957da90d8106144f873f7a83a5406978985848451e1be242858641d1278785a9b25e503a42d9b2e81da4725a3d43d43855f00f0a8286c78a3c817dd5d4d8ab51222c17f15549a9604ab31bed1b60197f003b202bc35dfb78686a0cf4dd9f83bf60a8f8a7fa4bec3465a9e531c7ef022d2951183bacf938a6b57e6ceec68e1bcb9682a981a1124ca5b710ffb1dc9edc66a7c11b846163f5177fd748b257f3b0ed806e699b07d28e59d1240f1544f5e7553f7fad8db9af4e52732914f72ea2b4acd3ca51926e49d428cdca240b1d6688f35f985094b80f622b2eebc80dd75dfe260f2aaa40a76d481cf82942e4aa53cc71b1a6ae90c4feeb42ff470889e645b2561270818b210c5cdb91c51d5e81f1ba01ad39fa417d5104ae28efbec6f4b0ad31fd33a7a8dff36aec771f99c1d024c232d583a0048c31a2904ac203bf6065d2e3d1a8c3502e2ed9bfe24693c4fb73c8aa3af912e17f9e0c62943613bb4aa2a97666f1a2ee1b7b30a49cbb987d93c0a14a9f36e98701d953aec1291f219ebd56ddcacb43030131d73f333df51063e9398798b6e32f8018dcaef06b8b83c4e29793ba5261aca42f63dbd422888ceaa35ab0091868cc0b711e416bb98fcb3c0579159ed15b0922c2c10bc95cd3d9bc308a30be0a0485b6d12db1dc0785a1897d0d9d2c09b3697d206b3404c7de3fe9f2c4b8e120726bff8b64bc21092d0385b96e261f7d95cfae71b91745c8fe1abc7f7c8c3b775d84580c4f75ff7f340f3b614bc8ef1eb978935208a4cd63c3d50de4e835c7c56a04d324811583a19dafb576ca64ac5a25bd2cb138331e657cec42a70a3ebf4f5f6b08fe8564698c602cd41ac29843c20f95c72676d0b424ce3c5ffe2a3b3e0631f465ed40da53e29a5de5ddb2020a07522f3d0d7bb00adca902363c960dba4469537429269fdcffd95737a1bda64d99633bc80f9519653b51f12ea1f1598eaf97b06483b1a3189bfcfbbc551a4e31d4fdea0ba3714dcb4b2ed2a6c99a2d0537baff0a0a65c30ec664910eca2fdefeb51779f73c1d23548b1ddab0875fc9b5c38bec0bb5d7fecd6aa52a6c688d79e0aed69c4b0ec2fb6665089cfd8193cd64ea75036dbd9204eb6063e151332f41aebf73168ec2bc1a6ebe81fa82f44bc44988ecc723334177a722ab4f9e2bc31b1475b2e66a593208d88ce7b14afaf5a46a98c6afc23b5e892835ed83819092300d692916fd2d9bae417af0454c553ea7d84d24158270c57af68d7dee6951fb7873a816c507ae15e2aaca06f55b44dddbaf66587236b0040c2578587032a0215ed361bd7d7b043263ffce077d7614baeb10e47bbe617fef4549f90ca85d3f4dc7bab667b4ba09d5d694762605174cfe6b9db9c349b511dcf425a2bddb61c523847c86efef3c7363ea6fb4fb5d64be93290cbce6881b0ccfaa6481eed6e541acafff92ebd22c02bc9bdde41fc93147d5eabd2c138e5a2226cfa2ad006bbf8d19dfd3374288a66e65972e89f3625c2335db3883ad41440204b37c44e8d3459cf08373aab3b3c667b593ee9184f81ebf24fa3bd5bfc74dbc09e3f8bcc91f7e80579087af2b20c084bb1044b7ea0ffc46fafdc8dd076f4d4c4a1e108cabee2b9dc3d526491e11ea824197a8f4eef46f7671acbd0b73e10ba6d999a005623737cfca37e67b30248ac85a988600297d89ddec7853dd67c084f7f50b78e5c0c0aaf960c5f26285d5f11787e588dcf4e69593cf0b9f72e11888eabfd4004a4cef7dee0ef06ab017e7e873cc0a29ddff936933e4208dd4b9a5223e77761f058d6367bc1e13407555916dc791f2769af9a204a89f2a90d4d5ba9cc492e9248939efcf802c61ed31e44a7050a2873cef6e0377364b9adc34dcfb367c63599ee52c4809b3b9174033fe4213f046f42a1b4df3d4361dffefe909990a7febecd2dfe8006ee795100cf6c29836016752e810d429f377f52e22300af51ae46968bcb179ee249b3db582932d733161fdd4f1de77cb8c0fb6f6f7b68f7f1f5b84c13633591061037b496fc7bb3b73f038dc95c28c90fe12355809037928e5aea0a323573501a981645ec864b2a8f1217339bad0a0b62f06a2aae27e18a800647d2f8b0cf30abe71971bba07ac800fbf14bc38242df843607929657aabeb3a6537ff69a79819ed7002a5cfead2a67666863f1eafd350850ab7452a90eca4b94f87035fda47a5a432435fb53488aee9340f78a02e11b0f8590a3535a621a3a0ce1b9009114af9af5496a16439d0616c667be36e99f41ad189285350da044f67a0a714a464753b282db5980d551e442e3f329f57b24de13b949c74acad9d071669d9653fd63a1d224b244fd271dd28e7f01494160f061f694bd07fd20ccdbf9616b9685afa48fc0d59e7e903cef168db2c3fb224b307f780b144b55e93da817a7a7c836d64733106681cfe727187642b41041ba762693db9223237395808e3440da77c0b1b8e883681dc5e91f4e1bca9f08075acb8bb480471bfca9c8e6b120e3ed03708f7433993c63a4989d9febea2f2e13331d1e0d19d835312e12cb5c40752ee34762a7a7fa4507162d9244b1630b6b521d3608454d5ba706bbe43c89e17ade23d06169878dab30debd289583b9631b9eabdc003995ad80ebfdddf573a213b62990e5a4375ae5c031347c074cad8e2bc8ce3d635666809ce6b72806ce1b94633e779b4504f9d3f1c8e67907e402212a81058c893c3035cf974928db8d8f5d54db56d2357cf82df831dcaf1b481bd63f2feb01a4a50e9a157ad1d29d8b8b2afd0e4fa93dc7ec272a4230da0ac7114d55fe5aa294a7243f5009299263cf0d15240f9afb8211867ac9ba2cb868f9e36bb7e7badf8f4f84630459ae9cd847778ae9ed6d7488043a0ced637e97c46e2b0e105e10a2fae9b7b4b95160b8ba5ec6fb12018183b466ee751527c2a671b41eb6b830d5a374ec23fa1ed1c6e14c2ff3269d4b6beb5e7b6214eac497780f53bf036670876af1e17317dd810a2bd0f066e676159fb18caf2273bbdcafa3949c68aac7fddcdcf5798208cce7ccc357973223ecd949bfe2c9b5112f14c78c4ce68e1c5b603c0f9ebc4e7d1120e797a8ce4b4f92f41fa1526531fac5e87abff56e72bccfac601eb467c769eb22986d111687e87a3096101fc735ec143ba86b3ef466b8c7ab54a796db8f916f8b77254ecdbe1b82e90cd75fbc7f885abe0faae7858d2c1ffb8f5ff2d441a81b54d35e3d8e4eb3a6dd64ae1c14c06c473076bc2f3782343c78d4d916c2d99f7f41cd526550e8567fde83fc7210dfa7728b25abf6a2aab17ebc5762b9b28f9bc76c81b24a2dfad09ff2b96229825dfbee93e50da45ea97cceafc3dd25f3cc47c17f9af97048b0ab9edaa1b83e06c3c882af0738e9ffac6bae9376c51bb7a6565cd6d96268008d02528828c16b1e3cd9309428683abd30f2eab6145c6d2e08a40623640bb3ae8f74fbfa9127d5fa964bd59f3d0f3fe30c346b59b98a8217877ceaaaa0929fbb8e3eda2dd3304c76f6e8eb7d9f399c4541cf62bc2ca9d632d11c4c1c7646d0c527faaf3a668c02d2a5f51ba5d1d06584d83af2aa233a520d85b05b6eec1572767087d4cedb8d82f7065af53592ba14991e7a109711d64671909629fbd409f434b9eb384bc94da8ab534b0307403c399a6755bb5b7ba490b9901c20b25f78664fe0d7da9631a5352d1ded29eefb6dc5afa10a3f12e10703f3f9de083a132085232ddc0fe6a28d5ef9e56fb1280c6d22b24fcc8a43a1d952f094896961b1d59fff17fa0af3a53e043602c29c6e7c84465820d33ac384ba8509aff41e46b5917d289fb3fcfb5dd4d0575b2d4ff20086a16f1ea944980761db19776e5a33600633a8d01e9c10e8452a5305be660e0bf188e3b6ba5c2fa2afc6fa7a0814b5d1907585e6c25d5c2e0b451023fcf6993bc0cd3854a77a9d2ae14476a08c3b4c4e4b436b82c83d1accb94ce5e732298a7ac39ff3122c1081dc6b226a5534f4eeb5f87f1917d97fa319756ed49ab98fd7868109bf693144109ccdaa9207e5509600a732a2185affa8e9d7e3e41f861228327a8cd8da5eedab1ee8661f66fd40ff0c1f510477fbb289a8b84bff3d36f9717ad960d48e3272853fde2de27a8e991fddfa2c6d7d65df3c1313b3063359ade25276995e682a43cfa455a7e998a07e1c6f9eb9a6932b6c0868fa40cde94283d293ed7c68039066ca58c13801b6ee9dd1e153cc2e41230cea8963ce01ca4e72a97fea0206c51d93ffeb57c4e37be2cde3ff3b2a32b6e764a5d5082fb04841c0a3fdcecda3b3d549a115d51ad54b3cccec81baccbb08c146370966fc4a7d5ff17e73439d34070dcc7f1cabfa046fa4e1825a1ac5debbac7f49239887f385314dee3ae22b16d95fbd8c8d1743b1b231f371547f07cab440a732c134c23daa90cc5ab8264d80753ab2ee6c4133b3d168aa6321a2c208e361b30d8722c23621a5b87c3b60b5b86501642bf10f6787bddec2bb08d90a0ade8544fc4e73f342113fdd1d694e7f6c2e746856cafd0c6a9ead79512bce1e0b185a83d6f58e7a5fca90044f2868210c96539397b9e6ebcdc00bc549f2347c5ec01ad14374f0c14b475475580b02c4f887bf500699a96f59917005eedd02627d20edb417f6f600ae40e9c3304480bbdfbea98ddeafa878a8efea3fc8b586b712c8e88dffba43a57627b0df90f15bf89b7075342643502aeaf2539b47fa1f4494cc5dde8f3fcb4cc2e3023d429ede75627b5017b59a4d2764f2cbc74af15464a</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里禁止通行!!</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
   </div>
   <div>
     
@@ -343,8 +348,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://luoguohua.github.io/2022/01/01/%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8/">
-            https://luoguohua.github.io/2022/01/01/%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8/
+            href="https://luoguohua.github.io/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93%E6%9A%A82022%E5%B9%B4%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/">
+            https://luoguohua.github.io/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93%E6%9A%A82022%E5%B9%B4%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -354,29 +359,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/01/01/MySQL%E8%A7%A6%E5%8F%91%E5%99%A8%E5%9C%A8%E8%AE%BE%E7%BD%AEID%E5%80%BC%E9%BB%98%E8%AE%A4%E4%B8%BAUUID/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">MySQL触发器设置ID值默认为UUID </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/01/01/%E4%BD%BF%E7%94%A8velocity%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%B8%8D%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98/" 
+        href="/2022/01/01/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93%E6%9A%A82021%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">使用velocity模板引擎生成代码格式不对的问题 </div>
+            <div class="nav-title">2020年终总结暨2021新年计划 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -394,7 +385,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8"><span class="toc-text">整合spring boot admin ，后台管理监控出现Redis指标异常</span></a></li></ol>
+
 </div></main>
             <aside class="left-column">
               
@@ -442,7 +433,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8"><span class="toc-text">整合spring boot admin ，后台管理监控出现Redis指标异常</span></a></li></ol>
+
       </div>
     </article>
   
@@ -558,7 +549,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E5%90%88spring-boot-admin-%EF%BC%8C%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%9B%91%E6%8E%A7%E5%87%BA%E7%8E%B0Redis%E6%8C%87%E6%A0%87%E5%BC%82%E5%B8%B8"><span class="toc-text">整合spring boot admin ，后台管理监控出现Redis指标异常</span></a></li></ol>
+
     </article>
   
   
