@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/avatar.png">
-  <title>面试杂记</title>
+  <title>标签</title>
   
     
       <meta 
         property="og:title" 
-        content="面试杂记">
+        content="标签">
     
     
       <meta 
         property="og:url" 
-        content="https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/index.html">
+        content="https://luoguohua.github.io/tags/spring-cloud/index.html">
     
     
       <meta 
@@ -40,30 +40,6 @@
         property="og:img" 
         content="罗国华的个人笔记博客">
     
-    
-      <meta 
-        property="og:type" 
-        content="article">
-      <meta 
-        property="og:article:published_time" 
-        content="2022-01-01">
-      <meta 
-        property="og:article:modified_time" 
-        content="2022-01-01">
-      <meta 
-        property="og:article:author" 
-        content="luoguohua">
-      
-        
-          <meta 
-            property="og:article:tag" 
-            content="eureka">
-        
-          <meta 
-            property="og:article:tag" 
-            content="redis">
-        
-      
     
   
   <script>
@@ -168,8 +144,6 @@
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
-    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
-  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -269,139 +243,31 @@
         <div class="container">
           <div class="columns">
             <main class="main-column">
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      面试杂记
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2022-01-01T08:28:29.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2022-01-01</span>
-    </time>
+<div class="card card-content tag-page-card">
+  <div class="tags-page-title">标签&nbsp-&nbspspring cloud</div>
+</div>
+<div class="archive-timeline">
+  
+  
     
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E9%9D%A2%E8%AF%95/" 
-          class="post-meta-link">
-          面试
-        </a>
+      <div class="archive-timeline-tag"><span>2022</span></div>
       
     
-    
-      <span class="dot"></span>
-      <span>359 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/eureka/" 
-            class="post-meta-link">
-            eureka
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/redis/" 
-            class="post-meta-link">
-            redis
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h1 id="面试杂记"><a href="#面试杂记" class="headerlink" title="面试杂记"></a>面试杂记</h1><h2 id="20211030"><a href="#20211030" class="headerlink" title="20211030"></a>20211030</h2><ul>
-<li>eureka是怎么实现服务发现与注册的？ <ol>
-<li>注册中心维护一个注册表。</li>
-<li>服务启动后，向注册表写入地址进行注册，关闭则从注册表中删除。</li>
-<li>服务与注册中心保持心跳联系。</li>
-</ol>
-</li>
-<li>redis的线程模型是什么样的？<ol>
-<li>redis使用I/O多路复用程序来同时监听多个套接字，并根据套接字目前执行任务来关联不同的事件处理器。</li>
-<li>当被监听的套接字准备好执行连接应答、读取、写入、关闭等操作时，与操作相对应的文件事件就会产生，这时文件事件处理器就会调用套接字之前关联好的事件处理器来处理这些事件。</li>
-<li>文件事件处理器以单线程方式运行，但通过I/O多路复用程序来监听多个套接字，文件事件处理器既实现了高性能的网络通信模型，又可以很好地与redis服务器中其他同样以单线程方式运行的模块对接。<br>个人的理解：redis的线程模型类似dispatchServlet，所有准备好套接字像请求一样进入I/O多路复用程序，然后顺序进入队列，事件分派器顺序读取队列，并根据处理类型分派到不同的处理器进行处理。</li>
-</ol>
-</li>
-</ul>
-
-  </div>
-  <div>
-    
-      <div 
-        class="post-note note-warning copyright" 
-        style="margin-top: 42px">
-        <p>
-          <span style="font-weight: bold;">作者：</span><a 
-            target="_blank" 
-            rel="nofollow noopener noreferrer" 
-            href="/about">
-            luoguohua
-          </a>
-        </p>
-        <p>
-          <span style="font-weight: bold;">文章链接：</span><a 
-            target="_blank" 
-            rel="nofollow noopener noreferrer" 
-            href="https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">
-            https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/
-          </a>
-        </p>
-        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
-      </div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/01/01/%E4%BD%BF%E7%94%A8velocity%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%B8%8D%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">使用velocity模板引擎生成代码格式不对的问题 </div>
-          
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2022-01-06</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2022/01/06/%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" 
+              class="archive-timeline-post-item">
+              使用nacos线上配置，导致junit启动异常的错误解决
+            </a>
+          </div>
         </div>
-      </a>
+      </div>
     </div>
   
-  
-</div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -440,18 +306,6 @@
               </div>
                <div class="sticky-tablet">
   
-  
-    <article class="display-when-two-columns spacer">
-      <div class="card card-content toc-card">
-        <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
-      </div>
-    </article>
   
   
   <article class="card card-content categories-widget">
@@ -564,21 +418,69 @@
   </article>
   
   
+    <article class="card card-content widescreen-archive archive-widget">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">8</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
 </div>
             </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
-  
-    <article class="card card-content toc-card">
-      <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
-    </article>
   
   
   <article class="card card-content">
@@ -615,6 +517,64 @@
 </div>
   </article>
   
+  
+    <article class="card card-content">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">8</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
   
 </div>
             </aside>
@@ -726,36 +686,6 @@
 </a> 
      
      
-     
-      <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img')
-    var i
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a')
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
-      wrapper.setAttribute('aria-label', 'illustration')
-      wrapper.style.cssText =
-        'width: 100%; display: flex; justify-content: center;'
-      if (img[i].alt) wrapper.dataset.caption = img[i].alt
-      wrapper.dataset.nolink = true
-      img[i].before(wrapper)
-      wrapper.append(img[i])
-      var divWrap = document.createElement('div')
-      divWrap.classList.add('gallery')
-      wrapper.before(divWrap)
-      divWrap.append(wrapper)
-    }
-    baguetteBox.run('.gallery')
-  }
-</script>
-<script>
-  loadScript(
-    "/js/lib/lightbox/baguetteBox.min.js",
-    addImgLayout
-  )
-</script>
- 
      
      
     <script src="/js/main.js"></script> 

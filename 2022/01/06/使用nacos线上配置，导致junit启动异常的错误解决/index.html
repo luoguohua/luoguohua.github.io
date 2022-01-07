@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img/avatar.png">
-  <title>面试杂记</title>
+  <title>使用nacos线上配置，导致junit启动异常的错误解决</title>
   
     
       <meta 
         property="og:title" 
-        content="面试杂记">
+        content="使用nacos线上配置，导致junit启动异常的错误解决">
     
     
       <meta 
         property="og:url" 
-        content="https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/index.html">
+        content="https://luoguohua.github.io/2022/01/06/%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-01-01">
+        content="2022-01-06">
       <meta 
         property="og:article:modified_time" 
-        content="2022-01-01">
+        content="2022-01-07">
       <meta 
         property="og:article:author" 
         content="luoguohua">
@@ -57,11 +57,11 @@
         
           <meta 
             property="og:article:tag" 
-            content="eureka">
+            content="nacos">
         
           <meta 
             property="og:article:tag" 
-            content="redis">
+            content="spring cloud">
         
       
     
@@ -272,30 +272,30 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      面试杂记
+      使用nacos线上配置，导致junit启动异常的错误解决
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-01-01T08:28:29.000Z">
+    <time datetime="2022-01-06T03:10:29.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-01-01</span>
+      <span>2022-01-06</span>
     </time>
     
       <span class="dot"></span>
       
         <a 
-          href="/categories/%E9%9D%A2%E8%AF%95/" 
+          href="/categories/%E9%9A%8F%E7%AC%94/" 
           class="post-meta-link">
-          面试
+          随笔
         </a>
       
     
     
       <span class="dot"></span>
-      <span>359 字</span>
+      <span>1.2k 字</span>
     
   </div>
   
@@ -310,18 +310,18 @@
         
           
           <a 
-            href="/tags/eureka/" 
+            href="/tags/nacos/" 
             class="post-meta-link">
-            eureka
+            nacos
           </a>
         
           
             <span class="dot"></span>
           
           <a 
-            href="/tags/redis/" 
+            href="/tags/spring-cloud/" 
             class="post-meta-link">
-            redis
+            spring cloud
           </a>
         
       </div>
@@ -331,20 +331,11 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="面试杂记"><a href="#面试杂记" class="headerlink" title="面试杂记"></a>面试杂记</h1><h2 id="20211030"><a href="#20211030" class="headerlink" title="20211030"></a>20211030</h2><ul>
-<li>eureka是怎么实现服务发现与注册的？ <ol>
-<li>注册中心维护一个注册表。</li>
-<li>服务启动后，向注册表写入地址进行注册，关闭则从注册表中删除。</li>
-<li>服务与注册中心保持心跳联系。</li>
-</ol>
-</li>
-<li>redis的线程模型是什么样的？<ol>
-<li>redis使用I/O多路复用程序来同时监听多个套接字，并根据套接字目前执行任务来关联不同的事件处理器。</li>
-<li>当被监听的套接字准备好执行连接应答、读取、写入、关闭等操作时，与操作相对应的文件事件就会产生，这时文件事件处理器就会调用套接字之前关联好的事件处理器来处理这些事件。</li>
-<li>文件事件处理器以单线程方式运行，但通过I/O多路复用程序来监听多个套接字，文件事件处理器既实现了高性能的网络通信模型，又可以很好地与redis服务器中其他同样以单线程方式运行的模块对接。<br>个人的理解：redis的线程模型类似dispatchServlet，所有准备好套接字像请求一样进入I/O多路复用程序，然后顺序进入队列，事件分派器顺序读取队列，并根据处理类型分派到不同的处理器进行处理。</li>
-</ol>
-</li>
-</ul>
+    <h1 id="使用nacos线上配置，导致junit启动异常的错误解决"><a href="#使用nacos线上配置，导致junit启动异常的错误解决" class="headerlink" title="使用nacos线上配置，导致junit启动异常的错误解决"></a>使用nacos线上配置，导致junit启动异常的错误解决</h1><h2 id="事故发生现象"><a href="#事故发生现象" class="headerlink" title="事故发生现象"></a>事故发生现象</h2><p>Junit 测试方法运行报如下错误：</p>
+<pre class="highlight"><span class="line">java.lang.IllegalStateException: Failed to load ApplicationContext</span><br><span class="line"></span><br><span class="line">	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)</span><br><span class="line">	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)</span><br><span class="line">	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)</span><br><span class="line">	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)</span><br><span class="line">	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)</span><br><span class="line">	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)</span><br><span class="line">	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)</span><br><span class="line">	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)</span><br><span class="line">	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)</span><br><span class="line">	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)</span><br><span class="line">	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)</span><br><span class="line">	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)</span><br><span class="line">	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)</span><br><span class="line">	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)</span><br><span class="line">	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)</span><br><span class="line">	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:43)</span><br><span class="line">	at org.junit.vintage.engine.VintageTestEngine$$Lambda$241/663466110.accept(Unknown Source)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)</span><br><span class="line">	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)</span><br><span class="line">	at java.util.Iterator.forEachRemaining(Iterator.java:116)</span><br><span class="line">	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)</span><br><span class="line">	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:512)</span><br><span class="line">	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:502)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)</span><br><span class="line">	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)</span><br><span class="line">	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)</span><br><span class="line">	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:82)</span><br><span class="line">	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:73)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher$$Lambda$190/976827477.accept(Unknown Source)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)</span><br><span class="line">	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69)</span><br><span class="line">	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)</span><br><span class="line">	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)</span><br><span class="line">	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)</span><br><span class="line">Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;targeterBeanPostProcessor&#x27; defined in class path resource [com/alibaba/cloud/dubbo/autoconfigure/DubboOpenFeignAutoConfiguration.class]: Unsatisfied dependency expressed through method &#x27;targeterBeanPostProcessor&#x27; parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository&#x27;: Unsatisfied dependency expressed through field &#x27;dubboMetadataConfigServiceProxy&#x27;; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy&#x27;: Unsatisfied dependency expressed through constructor parameter 3; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;compositeDiscoveryClient&#x27; defined in class path resource [org/springframework/cloud/client/discovery/composite/CompositeDiscoveryClientAutoConfiguration.class]: Unsatisfied dependency expressed through method &#x27;compositeDiscoveryClient&#x27; parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;nacosDiscoveryClient&#x27; defined in class path resource [com/alibaba/cloud/nacos/discovery/NacosDiscoveryClientConfiguration.class]: Unsatisfied dependency expressed through method &#x27;nacosDiscoveryClient&#x27; parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#x27;nacosServiceDiscovery&#x27; defined in class path resource [com/alibaba/cloud/nacos/discovery/NacosDiscoveryAutoConfiguration.class]: Unsatisfied dependency expressed through method &#x27;nacosServiceDiscovery&#x27; parameter 0; nested exception is org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name &#x27;nacosProperties&#x27;: Could not bind properties to &#x27;NacosDiscoveryProperties&#x27; : prefix=spring.cloud.nacos.discovery, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under &#x27;spring.cloud.nacos.discovery.namespace&#x27; to java.lang.String</span><br><span class="line">	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:797)</span><br><span class="line">	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1176)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$390/1172450799.getObject(Unknown Source)</span><br><span class="line">	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)</span><br><span class="line">	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:241)</span><br><span class="line">	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:723)</span><br><span class="line">	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:536)</span><br><span class="line">	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)</span><br><span class="line">	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)</span><br><span class="line">	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)</span><br><span class="line">	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)</span><br><span class="line">	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120)</span><br><span class="line">	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)</span><br><span class="line">	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)</span><br><span class="line">	... 46 more</span><br></pre>
+
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>在异常信息中可见<code>Failed to bind properties under &#39;spring.cloud.nacos.discovery.namespace&#39; to java.lang.String</code>，这里清晰的说明，没有找到相应的nacos注册中心的命名空间字符串。根据配置文件的加载顺序，为优先加载bootstrap.yml,然后加载远端相应环境的yml。<br>从这里可知是不能获取到命名空间。由于命名空间在bootstrap.yml中并没有写死，而是从Environment variables中获取，而junit启动类并没有做相应设置，导致无法加载相应的yml，因此启动失败。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>通过在idea右上方Edit Configurations中找到对应的启动类，并设置Environment variables后解决该问题。<br>如图所示：<br><img src="/images/202201061110.png" alt="图片异常" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/202201061110.png" class="lozad post-image"></p>
 
   </div>
   <div>
@@ -364,8 +355,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">
-            https://luoguohua.github.io/2022/01/01/%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/
+            href="https://luoguohua.github.io/2022/01/06/%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/">
+            https://luoguohua.github.io/2022/01/06/%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -375,20 +366,20 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
+  
+    <div class="nav-item-next">
       <a 
-        href="/2022/01/01/%E4%BD%BF%E7%94%A8velocity%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%B8%8D%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98/" 
+        href="/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93%E6%9A%A82022%E5%B9%B4%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" 
         class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
-          <div class="nav-label">上一篇</div>
+          <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">使用velocity模板引擎生成代码格式不对的问题 </div>
+            <div class="nav-title">2021年终总结暨2022年计划任务 </div>
           
         </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
       </a>
     </div>
-  
   
 </div>
 
@@ -401,7 +392,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3"><span class="toc-text">使用nacos线上配置，导致junit启动异常的错误解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E6%95%85%E5%8F%91%E7%94%9F%E7%8E%B0%E8%B1%A1"><span class="toc-text">事故发生现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -449,7 +440,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3"><span class="toc-text">使用nacos线上配置，导致junit启动异常的错误解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E6%95%85%E5%8F%91%E7%94%9F%E7%8E%B0%E8%B1%A1"><span class="toc-text">事故发生现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -577,7 +568,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0"><span class="toc-text">面试杂记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20211030"><span class="toc-text">20211030</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nacos%E7%BA%BF%E4%B8%8A%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AF%BC%E8%87%B4junit%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3"><span class="toc-text">使用nacos线上配置，导致junit启动异常的错误解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E6%95%85%E5%8F%91%E7%94%9F%E7%8E%B0%E8%B1%A1"><span class="toc-text">事故发生现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
     </article>
   
   
